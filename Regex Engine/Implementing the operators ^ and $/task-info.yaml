@@ -96,19 +96,9 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/114/stages/622/implement
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #32
-
-    A regex ending with '$' should match the preceding pattern only at the end of the input string!
-
-    Please find below the output of your program during this failed test.
-    Note that the '>' character indicates the beginning of the input line.
-
-    ---
-
-    > app$|apple
-    True
-  time: Mon, 28 Sep 2020 08:32:32 UTC
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/114/stages/622/implement">JetBrains
+    Academy</a>
+  time: Fri, 02 Oct 2020 20:19:01 UTC
 record: 4
