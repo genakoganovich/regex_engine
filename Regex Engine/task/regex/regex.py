@@ -11,14 +11,24 @@ def compare(regex, input_string):
     return regex == input_string
 
 
-def match(regex, input_string):
+def match_equal_length(regex, input_string):
     if not regex:
         return True
     if not input_string:
         return False
     if not compare(regex[0], input_string[0]):
         return False
-    return match(regex[1:], input_string[1:])
+    return match_equal_length(regex[1:], input_string[1:])
+
+
+def match(regex, input_string):
+    while input_string:
+        if match_equal_length(regex, input_string):
+            return True
+        input_string = input_string[1:]
+    if not regex:
+        return True
+    return False
 
 
 def run():

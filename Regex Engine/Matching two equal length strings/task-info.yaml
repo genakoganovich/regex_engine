@@ -49,6 +49,9 @@ files:
     if __name__ == '__main__':
         RegexTest('regex.regex').run_tests()
   learner_created: false
+- name: regex/test_match.py
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/114/stages/620/implement
 status: Solved
 feedback:
