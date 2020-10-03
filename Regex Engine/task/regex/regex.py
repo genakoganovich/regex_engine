@@ -41,12 +41,12 @@ def check_regex_all(regex_all, input_string):
 
 
 def create_item(regex, index, i):
-    return regex[:(index - 1)] + \
-           regex[index - 1] * i + regex[(index + 1):]
+    return regex[:(index - 1)] + regex[index - 1] * i + regex[(index + 1):]
 
 
-def create_repetition(regex, index, beg, end):
+def create_repetition(regex, mark, beg, end):
     repetition = list()
+    index = str(regex).find(mark)
     for i in range(beg, end):
         repetition.append(create_item(regex, index, i))
     return repetition
@@ -54,16 +54,13 @@ def create_repetition(regex, index, beg, end):
 
 def check_repetition(regex, input_string):
     if '?' in regex:
-        index = str(regex).find('?')
-        repetition = create_repetition(regex, index, 0, 2)
+        repetition = create_repetition(regex, '?', 0, 2)
         return check_regex_all(repetition, input_string)
     elif '*' in regex:
-        index = str(regex).find('*')
-        repetition = create_repetition(regex, index, 0, len(input_string))
+        repetition = create_repetition(regex, '*', 0, len(input_string))
         return check_regex_all(repetition, input_string)
     elif '+' in regex:
-        index = str(regex).find('+')
-        repetition = create_repetition(regex, index, 1, len(input_string))
+        repetition = create_repetition(regex, '+', 1, len(input_string))
         return check_regex_all(repetition, input_string)
     else:
         return match(regex, input_string)
