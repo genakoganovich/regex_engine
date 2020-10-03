@@ -43,6 +43,9 @@ files:
 - name: regex/test_regex.py
   visible: true
   learner_created: true
+- name: regex/test_compare.py
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/114/stages/619/implement
 status: Solved
 feedback:

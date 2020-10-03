@@ -112,6 +112,35 @@ files:
     if __name__ == '__main__':
         RegexTest('regex.regex').run_tests()
   learner_created: false
+- name: regex/test_regex.py
+  visible: true
+  text: |
+    import unittest
+    import regex
+
+
+    class Test(unittest.TestCase):
+        def test_match(self):
+            self.assertTrue(regex.match('^app', 'apple'))
+            self.assertTrue(regex.match('^a', 'apple'))
+            self.assertTrue(regex.match('^apple', 'apple pie'))
+            self.assertFalse(regex.match('^le', 'apple'))
+            self.assertTrue(regex.match('le$', 'apple'))
+            self.assertTrue(regex.match('.$', 'apple'))
+            self.assertTrue(regex.match('apple$', 'tasty apple'))
+            self.assertFalse(regex.match('app$', 'apple'))
+            self.assertTrue(regex.match('^apple$', 'apple'))
+            self.assertFalse(regex.match('^apple$', 'tasty apple'))
+            self.assertFalse(regex.match('^apple$', 'apple pie'))
+            self.assertFalse(regex.match('^app$', 'apple'))
+
+
+    if __name__ == '__main__':
+        unittest.main()
+  learner_created: true
+- name: __init__.py
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/114/stages/623/implement
 status: Unchecked
-record: -1
+record: 5
