@@ -33,9 +33,45 @@ def match(regex, input_string):
     return False
 
 
+def check_regex_all(regex_all, input_string):
+    for regex in regex_all:
+        if match(regex, input_string):
+            return True
+    return False
+
+
+def create_item(regex, index, i):
+    return regex[:(index - 1)] + \
+           regex[index - 1] * i + regex[(index + 1):]
+
+
+def create_repetition(regex, index, beg, end):
+    repetition = list()
+    for i in range(beg, end):
+        repetition.append(create_item(regex, index, i))
+    return repetition
+
+
+def check_repetition(regex, input_string):
+    if '?' in regex:
+        index = str(regex).find('?')
+        repetition = create_repetition(regex, index, 0, 2)
+        return check_regex_all(repetition, input_string)
+    elif '*' in regex:
+        index = str(regex).find('*')
+        repetition = create_repetition(regex, index, 0, len(input_string))
+        return check_regex_all(repetition, input_string)
+    elif '+' in regex:
+        index = str(regex).find('+')
+        repetition = create_repetition(regex, index, 1, len(input_string))
+        return check_regex_all(repetition, input_string)
+    else:
+        return match(regex, input_string)
+
+
 def run():
     regex, input_string = input().split('|')
-    print(match(regex, input_string))
+    print(check_repetition(regex, input_string))
 
 
 if __name__ == "__main__":
